@@ -13,7 +13,7 @@ export function AboutWork() {
     >
       <Container className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
         <span className="text-[#7a4a1e] text-xs font-bold tracking-widest uppercase">
-          05 · The Clients
+          04 · The Clients
         </span>
 
         <AnimatedHeadline

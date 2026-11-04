@@ -18,7 +18,7 @@ export function AboutGlobal() {
       <Container className="mx-auto grid max-w-4xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="flex flex-col gap-5">
           <span className="text-sky-ink text-xs font-bold tracking-widest uppercase">
-            06 · Beyond
+            05 · Beyond
           </span>
 
           <AnimatedHeadline

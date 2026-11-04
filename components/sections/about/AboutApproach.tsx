@@ -67,13 +67,10 @@ function OrbitDiagram() {
       aria-hidden="true"
       className="relative mx-auto aspect-square w-full max-w-lg"
     >
-      {/* Static (non-rotating) clip wrapper — .orbit-ring itself spins via
-          CSS animation, so overflow-hidden has to live on a stationary
-          ancestor or the rotated bounding box would still escape it. Stays
-          clipped at every breakpoint: the ring's rotational sweep (nodes sit
-          near the 42% radius) reaches well past the square box's edge at
-          diagonal angles, not just the glow's few px of static bleed. */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* The orbit ring itself spins via
+          CSS animation. The ring and its node glows remain unclipped so they
+          can fade naturally into the page background at every breakpoint. */}
+      <div className="absolute inset-0">
         <div className="orbit-ring absolute inset-0">
           <svg
             viewBox="0 0 100 100"
