@@ -1,4 +1,14 @@
+@import "@fontsource-variable/inter-tight/wght.css";
+@import "@fontsource/instrument-serif/latin-400.css";
+@import "@fontsource/instrument-serif/latin-400-italic.css";
+@import "@fontsource-variable/caveat/wght.css";
 @import "tailwindcss";
+
+:root {
+  --font-inter-tight: "Inter Tight Variable";
+  --font-instrument-serif: "Instrument Serif";
+  --font-caveat: "Caveat Variable";
+}
 
 @theme inline {
   --font-sans: var(--font-inter-tight);

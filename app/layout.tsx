@@ -4,7 +4,6 @@ import Script from "next/script";
 
 import { StructuredData } from "@/components/shared/StructuredData";
 import { defaultMetadata, defaultViewport } from "@/config/metadata";
-import { displayFont, handwritingFont, sansFont } from "@/lib/fonts";
 
 export const metadata = defaultMetadata;
 export const viewport = defaultViewport;
@@ -13,11 +12,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${sansFont.variable} ${displayFont.variable} ${handwritingFont.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" suppressHydrationWarning>
       <body>
         <StructuredData />
         <Script id="js-enabled" strategy="beforeInteractive">
