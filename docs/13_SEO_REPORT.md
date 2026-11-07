@@ -9,13 +9,13 @@ This audit covers generated metadata for every built route, canonical handling, 
 | Route         | Title                                | Description                                       | Canonical                  | Indexing                      |
 | ------------- | ------------------------------------ | ------------------------------------------------- | -------------------------- | ----------------------------- |
 | `/`           | `Luit Studio — Creative Agency`      | Present and relevant                              | Missing                    | Allowed                       |
-| `/contact`    | `Contact                             | Luit Studio`                                      | Present and route-specific | `https://luit.studio/contact` | Allowed |
+| `/contact`    | `Contact                             | Luit Studio`                                      | Present and route-specific | `https://luitstudio.com/contact` | Allowed |
 | Framework 404 | `404: This page could not be found.` | Inherits default metadata in the generated stream | None                       | `noindex`                     |
 
 Verified global output:
 
 - `<html lang="en">` is present.
-- `metadataBase` uses `NEXT_PUBLIC_SITE_URL`, falling back to `https://luit.studio`.
+- `metadataBase` uses `NEXT_PUBLIC_SITE_URL`, falling back to `https://luitstudio.com`.
 - Title template, description, application name, author, creator, Open Graph, and Twitter metadata are server-generated.
 - `robots.txt`, `sitemap.xml`, and an SVG favicon build successfully.
 - No client-side metadata library or duplicate runtime SEO layer is present.
@@ -40,7 +40,7 @@ Verified global output:
 ### Robots
 
 - Allows all user agents.
-- References `https://luit.studio/sitemap.xml` through the configured base URL.
+- References `https://luitstudio.com/sitemap.xml` through the configured base URL.
 - Framework not-found output includes `noindex`.
 - No accidental site-wide `noindex` directive was found.
 

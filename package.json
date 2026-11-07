@@ -8,6 +8,7 @@
     "build": "node ./node_modules/next/dist/bin/next build",
     "start": "node ./node_modules/next/dist/bin/next start",
     "lint": "node ./node_modules/eslint/bin/eslint.js . --max-warnings=0",
+    "seo:validate": "node scripts/validate-seo.mjs",
     "typecheck": "node ./node_modules/typescript/bin/tsc --noEmit",
     "format": "node ./node_modules/prettier/bin/prettier.cjs --write .",
     "format:check": "node ./node_modules/prettier/bin/prettier.cjs --check ."

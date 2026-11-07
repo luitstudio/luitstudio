@@ -85,6 +85,8 @@ export function SiteHeader() {
               <a
                 href={getWhatsAppLink()}
                 {...getExternalLinkAttributes("Chat on WhatsApp")}
+                data-analytics-event="contact_whatsapp"
+                data-analytics-location="header"
                 className="group bg-brand grid size-10 shrink-0 place-items-center rounded-full text-white transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-ink active:translate-y-0 active:scale-[0.96] motion-reduce:transform-none"
               >
                 <FaWhatsapp

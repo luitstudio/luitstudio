@@ -7,6 +7,8 @@ import { siteConfig } from "@/config/site";
 // is a clearer, more deliberate signal for GEO (being cited by AI answer
 // engines like ChatGPT, Claude, Perplexity, and Google's AI Overviews).
 const AI_CRAWLER_USER_AGENTS = [
+  "Googlebot",
+  "OAI-SearchBot",
   "GPTBot",
   "ChatGPT-User",
   "ClaudeBot",
@@ -20,10 +22,11 @@ const AI_CRAWLER_USER_AGENTS = [
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/" },
+      { userAgent: "*", allow: "/", disallow: ["/admin/", "/api/"] },
       ...AI_CRAWLER_USER_AGENTS.map((userAgent) => ({
         userAgent,
         allow: "/",
+        disallow: ["/admin/", "/api/"],
       })),
     ],
     sitemap: `${siteConfig.url}/sitemap.xml`,

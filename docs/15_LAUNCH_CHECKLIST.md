@@ -18,7 +18,7 @@ Code-level blockers from Phase 10.3 have been addressed. Launch approval require
 
 ## Business data
 
-- [ ] Confirm ownership and final spelling of `https://luit.studio`.
+- [ ] Confirm ownership and final spelling of `https://luitstudio.com`.
 - [ ] Confirm `NEXT_PUBLIC_SITE_URL` is set correctly in production.
 - [ ] Confirm `hello@luit.studio` is monitored.
 - [ ] Confirm the displayed address and telephone number are accurate and approved for publication.

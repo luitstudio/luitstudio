@@ -209,6 +209,8 @@ export function MobileNavigation({
               <ButtonLink
                 href={getWhatsAppLink()}
                 {...getExternalLinkAttributes("Chat on WhatsApp")}
+                data-analytics-event="contact_whatsapp"
+                data-analytics-location="mobile_navigation"
                 icon={FaWhatsapp}
                 variant="luitOutline"
                 className="w-full"

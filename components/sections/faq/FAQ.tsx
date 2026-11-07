@@ -20,6 +20,14 @@ import { Container } from "@/components/ui/container";
 // clients).
 const faqs = [
   {
+    question: "Which company provides website development in Guwahati?",
+    answer:
+      "Luit Studio is a Guwahati, Assam design and build studio offering web and app development alongside design, automation, marketing, and content services. Tell us what you need and we will confirm the right scope before proposing work.",
+    icon: Globe,
+    iconBg: "bg-violet-100",
+    iconColor: "text-violet-600",
+  },
+  {
     question: "What if I only need one service?",
     answer:
       "That's fine — most clients start with just one. Web development, a brand refresh, or ongoing social media handling all work as standalone engagements. We scope and price around what you actually need.",

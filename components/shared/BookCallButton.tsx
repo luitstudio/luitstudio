@@ -22,6 +22,8 @@ export function BookCallButton({
       data-cal-link={calConfig.link}
       data-cal-namespace={calConfig.namespace}
       data-cal-config={JSON.stringify({ layout: "month_view" })}
+      data-analytics-event="book_call"
+      data-analytics-location="cta"
       {...props}
     >
       {children}

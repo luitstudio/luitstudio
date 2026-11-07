@@ -65,8 +65,8 @@ Production CSP omits `unsafe-eval`. Development adds it only for the Next.js dev
 
 ## Metadata and crawlability
 
-- Home canonical: `https://luit.studio/`, resolved through `metadataBase`.
-- Contact canonical: `https://luit.studio/contact`.
+- Home canonical: `https://luitstudio.com/`, resolved through `metadataBase`.
+- Contact canonical: `https://luitstudio.com/contact`.
 - Home and contact have route-correct titles, descriptions, Open Graph URLs, site name, locale, type, Twitter titles, and Twitter descriptions.
 - Both routes reference the generated 1200 × 630 PNG social preview.
 - Robots, sitemap, language, favicon, and framework 404 `noindex` behavior remain intact.

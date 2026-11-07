@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Apply",
   description: "Tell Luit Studio about your work — no open role required.",
   alternates: { canonical: ROUTES.careerApply },
+  robots: { index: false, follow: true },
 };
 
 interface GeneralApplicationPageProps {

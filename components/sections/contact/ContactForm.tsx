@@ -5,6 +5,7 @@ import { useActionState, useEffect, useRef } from "react";
 
 import { submitContactForm } from "@/app/(site)/contact/actions";
 import { contactDetails } from "@/config/contact";
+import { trackEvent } from "@/lib/analytics";
 import type { ContactField } from "@/types/contact";
 import { initialContactFormState } from "@/types/contact-form";
 
@@ -25,6 +26,13 @@ export function ContactForm({ fields, submitLabel }: ContactFormProps) {
 
   useEffect(() => {
     if (state.status === "success") {
+      const formData = formRef.current ? new FormData(formRef.current) : null;
+      trackEvent("generate_lead", {
+        method: "contact_form",
+        page_path: window.location.pathname,
+        service_interest: formData?.get("interest")?.toString(),
+        budget_range: formData?.get("budget")?.toString(),
+      });
       formRef.current?.reset();
     }
   }, [state.status]);

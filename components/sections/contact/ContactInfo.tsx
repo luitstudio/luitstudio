@@ -25,6 +25,8 @@ export function ContactInfo({ details }: ContactInfoProps) {
       <address className="mt-8 flex flex-col gap-6 not-italic">
         <a
           href={`mailto:${details.email}`}
+          data-analytics-event="contact_email"
+          data-analytics-location="contact_details"
           className="group flex items-center gap-3 text-white/75 transition-[transform,color] duration-200 hover:translate-x-1 hover:text-white focus-visible:translate-x-1 focus-visible:text-white motion-reduce:transform-none"
         >
           <Mail
@@ -46,6 +48,8 @@ export function ContactInfo({ details }: ContactInfoProps) {
         <ButtonLink
           href={getWhatsAppLink()}
           {...getExternalLinkAttributes("Chat on WhatsApp")}
+          data-analytics-event="contact_whatsapp"
+          data-analytics-location="contact_details"
           icon={FaWhatsapp}
           variant="outlineLight"
           className="w-full sm:w-auto"

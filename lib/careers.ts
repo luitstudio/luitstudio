@@ -60,6 +60,18 @@ function mapOpeningRow(row: JobOpeningRow): JobOpening {
   };
 }
 
+// A role page can be indexed only when it provides enough independent job
+// information to be useful beyond its application form. This also keeps thin
+// draft-like postings out of the sitemap without removing them from the CMS.
+export function isIndexableOpening(opening: JobOpening): boolean {
+  return (
+    opening.summary.trim().length >= 80 &&
+    opening.description.trim().length >= 160 &&
+    opening.responsibilities.length > 0 &&
+    opening.requirements.length > 0
+  );
+}
+
 function mapApplicationRow(row: JobApplicationRow): JobApplication {
   const joinedOpening = Array.isArray(row.job_openings)
     ? row.job_openings[0]

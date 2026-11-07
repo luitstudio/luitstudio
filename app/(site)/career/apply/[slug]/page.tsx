@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { ApplicationForm } from "@/components/sections/career/ApplicationForm";
 import { Container } from "@/components/ui/container";
 import { ROUTES } from "@/constants/routes";
-import { getPublishedOpening } from "@/lib/careers";
+import { getPublishedOpening, isIndexableOpening } from "@/lib/careers";
 
 interface ApplyPageProps {
   params: Promise<{ slug: string }>;
@@ -24,6 +24,7 @@ export async function generateMetadata({
     title: `Apply — ${opening.title}`,
     description: opening.summary,
     alternates: { canonical: `${ROUTES.careerApply}/${opening.slug}` },
+    robots: { index: isIndexableOpening(opening), follow: true },
   };
 }
 

@@ -28,8 +28,8 @@ export function ServicesHero() {
 
           <Reveal delay={0.18}>
             <p className="text-body max-w-lg text-base leading-7 sm:text-lg sm:leading-8">
-              Digital products, visual systems, campaigns and motion for
-              businesses ready for what&apos;s next.
+              Web and app development, AI automation, design, marketing, and
+              motion for businesses in Guwahati, Assam, and beyond.
             </p>
           </Reveal>
 

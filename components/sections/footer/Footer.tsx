@@ -69,6 +69,8 @@ export function Footer({ content = footerContent }: FooterProps) {
                 <address className="mt-8 flex flex-col gap-3 not-italic">
                   <a
                     href={`mailto:${content.contact.email}`}
+                    data-analytics-event="contact_email"
+                    data-analytics-location="footer"
                     className="group text-ink/70 hover:text-brand focus-visible:text-brand flex items-start gap-3 text-sm transition-colors"
                   >
                     <Mail
@@ -81,6 +83,8 @@ export function Footer({ content = footerContent }: FooterProps) {
                   <a
                     href={getWhatsAppLink()}
                     {...getExternalLinkAttributes("Chat on WhatsApp")}
+                    data-analytics-event="contact_whatsapp"
+                    data-analytics-location="footer"
                     className="group text-ink/70 hover:text-brand focus-visible:text-brand flex items-start gap-3 text-sm transition-colors"
                   >
                     <FaWhatsapp
