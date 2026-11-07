@@ -22,6 +22,35 @@ const cases = [
     expectedLocation: "https://luitstudio.com/contact?source=seo&campaign=phase-2",
   },
   {
+    name: "legacy internship route",
+    path: "/internship",
+    host: "luitstudio.com",
+    expectedStatus: 308,
+    expectedLocation: "https://luitstudio.com/career",
+  },
+  {
+    name: "legacy internship trailing slash",
+    path: "/internship/",
+    host: "luitstudio.com",
+    expectedStatus: 308,
+    expectedLocation: "https://luitstudio.com/career",
+  },
+  {
+    name: "legacy internship query parameters",
+    path: "/internship?source=google",
+    host: "luitstudio.com",
+    expectedStatus: 308,
+    expectedLocation: "https://luitstudio.com/career?source=google",
+  },
+  {
+    name: "www legacy internship first hop",
+    path: "/internship",
+    host: "www.luitstudio.com",
+    expectedStatus: 308,
+    expectedLocation: "https://luitstudio.com/internship",
+    expectedFinalLocation: "https://luitstudio.com/career",
+  },
+  {
     name: "apex homepage",
     path: "/",
     host: "luitstudio.com",
@@ -58,6 +87,20 @@ for (const testCase of cases) {
   }
   if (testCase.expectedLocation && location !== testCase.expectedLocation) {
     failures.push(`${testCase.name}: expected Location ${testCase.expectedLocation}, received ${location ?? "missing"}`);
+  }
+  if (testCase.expectedFinalLocation && location) {
+    const nextUrl = new URL(location);
+    const followUp = await fetch(`${baseUrl}${nextUrl.pathname}${nextUrl.search}`, {
+      headers: {
+        host: nextUrl.host,
+        "x-forwarded-host": nextUrl.host,
+      },
+      redirect: "manual",
+    });
+    const finalLocation = followUp.headers.get("location");
+    if (followUp.status !== 308 || finalLocation !== testCase.expectedFinalLocation) {
+      failures.push(`${testCase.name}: expected final Location ${testCase.expectedFinalLocation}, received ${finalLocation ?? "missing"}`);
+    }
   }
 }
 

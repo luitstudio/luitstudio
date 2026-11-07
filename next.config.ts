@@ -49,6 +49,9 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: process.cwd(),
   poweredByHeader: false,
   reactStrictMode: true,
+  // Middleware owns trailing-slash redirects so /internship/ can redirect
+  // directly to /career instead of first normalizing to /internship.
+  skipTrailingSlashRedirect: true,
 };
 
 export default nextConfig;

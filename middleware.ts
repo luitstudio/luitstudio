@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 const WWW_HOST = "www.luitstudio.com";
 const CANONICAL_HOST = "luitstudio.com";
+const LEGACY_INTERNSHIP_PATHS = new Set(["/internship", "/internship/"]);
 
 function requestHost(request: NextRequest): string {
   // On Vercel, x-forwarded-host carries the visitor-facing host. Fall back to
@@ -25,6 +26,30 @@ export async function middleware(request: NextRequest) {
     canonicalUrl.host = CANONICAL_HOST;
     canonicalUrl.port = "";
     return NextResponse.redirect(canonicalUrl, 308);
+  }
+
+  // The internship programme route was retired when the recruitment experience
+  // moved to /career. Redirect the legacy apex URL only; preview and Vercel
+  // deployment hostnames retain their normal, non-canonical behavior.
+  if (
+    requestHost(request) === CANONICAL_HOST &&
+    LEGACY_INTERNSHIP_PATHS.has(request.nextUrl.pathname)
+  ) {
+    const careerUrl = new URL(`https://${CANONICAL_HOST}/career`);
+    careerUrl.search = request.nextUrl.search;
+    return NextResponse.redirect(careerUrl, 308);
+  }
+
+  // Next's default trailing-slash redirect is handled here so the legacy
+  // internship exception above can run first. This preserves the existing
+  // no-trailing-slash URL convention for every other route and host.
+  if (
+    request.nextUrl.pathname.length > 1 &&
+    request.nextUrl.pathname.endsWith("/")
+  ) {
+    const normalizedUrl = request.nextUrl.clone();
+    normalizedUrl.pathname = normalizedUrl.pathname.slice(0, -1);
+    return NextResponse.redirect(normalizedUrl, 308);
   }
 
   // Keep authentication middleware scoped to admin traffic. The broad matcher
